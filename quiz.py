@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 import random
-def get_word_definition(word_list, word_definition):
+def get_word_and_definition(word_list, word_dict):
     word_index = random.randrange(len(word_list))
-    word = word_list[word_index]
-    definition = word_definition.get(word)
+    word = word_list.pop(word_index)
+    definition = word_dict.get(word)
     return(word, definition)
 
 
 def get_dictionary(rawstring):
     word, definition = rawstring.split(',', 1)
     return (word, definition)
+
 fh = open('Vocabulary_list.csv', 'r')
 wd_list = fh.readlines()
 #print(wd_list)
@@ -22,9 +23,9 @@ word_dict = dict()
 for rawstring in wd_set:
     word, definition = get_dictionary(rawstring)
     word_dict[word] = definition
-    print(word)
+    #print(word)
 
 
-word_list = list(word)
+word_list = list(word_dict)
 
 
